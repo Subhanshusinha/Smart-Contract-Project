@@ -22,21 +22,25 @@ To interact with the Safe Operations Contract, you will need to use a compatible
 1. Compile the `SafeOperations.sol` file.
 2. Deploy the contract to the desired Ethereum network (e.g., local development network, testnet, or mainnet).
 3. Once deployed, you can interact with the contract using its public functions:
-  - `safeAdd(uint a, uint b)`: Adds two unsigned integers, reverts on overflow.
-  - `safeSubtract(uint a, uint b)`: Subtracts two unsigned integers, reverts on underflow.
-  - `safeMultiply(uint a, uint b)`: Multiplies two unsigned integers, reverts on overflow.
-  - `deposit(uint amount)`: Adds an amount to the contract's balance, reverts on overflow.
-  - `withdraw(uint amount)`: Subtracts an amount from the contract's balance, reverts if the balance is insufficient.
-  - `revertWithMessage()`: A function that purposefully reverts with a custom error message.
+    - `safeAdd(uint a, uint b)`: Adds two unsigned integers, reverts on overflow.
+    - `safeSubtract(uint a, uint b)`: Subtracts two unsigned integers, reverts on underflow.
+    - `safeMultiply(uint a, uint b)`: Multiplies two unsigned integers, reverts on overflow.
+    - `deposit(uint amount)`: Adds an amount to the contract's balance, reverts on overflow.
+    - `withdraw(uint amount)`: Subtracts an amount from the contract's balance, reverts if the balance is insufficient.
+    - `revertWithMessage()`: A function that purposefully reverts with a custom error message.
 
 
 Example deployment in Solidity:
 
-uint sum = safeOperations.safeAdd(10, 20);
-uint diff = safeOperations.safeSubtract(30, 10);
-uint product = safeOperations.safeMultiply(5, 6);
-safeOperations.deposit(100);
-safeOperations.withdraw(50);
+    uint sum = safeOperations.safeAdd(10, 20);
+  
+    uint diff = safeOperations.safeSubtract(30, 10);
+  
+    uint product = safeOperations.safeMultiply(5, 6);
+  
+    safeOperations.deposit(100);
+  
+    safeOperations.withdraw(50);
 
 ## Help
 
