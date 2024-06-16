@@ -1,0 +1,49 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.0;
+
+// A contract demonstrating the use of require(), assert(), and revert() statements.
+contract SafeOperations {
+    uint public balance;
+
+    function safeAdd(uint a, uint b) public pure returns (uint) {  	 // Adds two unsigned integers, reverts on overflow.
+        uint c = a + b;
+        require(c >= a, " addition overflow");
+        return c;
+    }
+
+    function safeSubtract(uint a, uint b) public pure returns (uint) { 	  // Subtracts two unsigned integers, reverts on underflow.
+        require(b <= a, " subtraction underflow");
+        uint c = a - b;
+        assert(c <= a);
+        return c;
+    }
+
+    function safeMultiply(uint a, uint b) public pure returns (uint) {  	 // Multiplies two unsigned integers, reverts on overflow.
+        if (a == 0 || b == 0) {
+            return 0;
+        }
+        uint c = a * b;
+        require(c / a == b, " multiplication overflow");
+        return c;
+    }
+
+     // Adds a value to the contract's balance and returns if the new balance exceeds the maximum integer value.
+     function deposit(uint amount) public {
+        uint newBalance = balance + amount;
+        require(newBalance >= balance, " deposit overflow");
+        balance = newBalance;
+    }
+
+     //Subtracts an amount from the contract's balance and returns if the new balance is less than zero.
+    function withdraw(uint amount) public {
+        require(amount <= balance, " insufficient balance");
+        uint newBalance = balance - amount;
+        assert(newBalance <= balance);
+        balance = newBalance;
+    }
+
+      // A function that purposefully reverts with a error message.
+    function revertWithMessage() public pure {
+        revert("This function was purposefully reverted");
+    }
+}
